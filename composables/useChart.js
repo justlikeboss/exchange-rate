@@ -8,24 +8,11 @@ export default (ctx, list) => {
     chart.value.destroy()
   }
 
-  const createChartData = (data) => {
-    return {
-      labels: data.map(row => row.date),
-      datasets: [{
-        label: toChinese['cash_buy'],
-        data: data.map(row => row.cash_buy)
-      }, {
-        label: toChinese['cash_sell'],
-        data: data.map(row => row.cash_sell)
-      }]
-    }
-  }
 
-  const createChart = async () => {
-    const data = list.value.data
+  const createChart = async (data) => {
     chart.value = new Chart(ctx.value, {
       type: 'line',
-      data: createChartData(data),
+      data,
       options: {
         responsive: true,
         interaction: {

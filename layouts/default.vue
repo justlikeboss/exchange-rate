@@ -1,16 +1,19 @@
 <template>
-  <header class="sticky top-0 mb-4 bg-gradient-to-b from-primary/5 to-primary/0 backdrop-blur-3xl z-20">
-    <div class=" max-w-6xl mx-auto w-5/6 py-6 flex items-center justify-between">
-      <NuxtLink to="/">
+  <header class="sticky top-0 mb-4 backdrop-blur-3xl z-20">
+    <div class=" max-w-6xl mx-auto w-5/6 py-3 flex items-center justify-between">
+      <NuxtLink class="btn btn-ghost" to="/">
         <img class=" inline-block align-middle w-6" src="../assets/logo.svg" alt="logo">
         <span class="ml-3 text-md align-middle font-bold">{{ appConfig.title }}</span>
       </NuxtLink>
       <nav>
-        <ul>
-          <li v-for="item in navs">
-            <NuxtLink class="text-sm" :to="item.url">{{ item.name }}</NuxtLink>
-          </li>
-        </ul>
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-sm btn-ghost m-1"><i class='bx bx-menu'></i></div>
+          <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+            <li v-for="item in navs">
+              <NuxtLink class="text-sm" :to="item.url">{{ item.name }}</NuxtLink>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
   </header>
@@ -22,23 +25,23 @@
       <div class="grid gap-10 grid-cols-2 md:grid-cols-4 mb-10">
         <div>
           <h3 class="mb-4">
-            <NuxtLink class="group" to="/">
+            <NuxtLink class="btn btn-ghost group" to="/">
               <img class="grayscale group-hover:grayscale-0 inline-block align-middle w-6" src="../assets/logo.svg" alt="logo">
               <span class="ml-3 text-md align-middle text-stone-500">{{ appConfig.title }}</span>
             </NuxtLink>
           </h3>
           <p>
-            <a class="text-stone-500" href="mailto:contact@justlikeboss.com">
+            <a class="text-stone-500 btn btn-ghost btn-sm" href="mailto:contact@justlikeboss.com">
               <i class='bx bx-envelope bx-sm'></i>
             </a>
           </p>
           <p>
-            <a class=" text-xs text-stone-400"  href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer">Rates By Exchange Rate API<i class='bx bx-link-external'></i></a>
+            <a class=" hover:underline text-xs text-stone-400"  href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer">Rates By Exchange Rate API<i class='bx bx-link-external'></i></a>
           </p>
         </div>
         <div class="md:col-start-2">
           <h3 class="mb-4"><i class='bx bx-heart'></i>合作夥伴</h3>
-          <p class="mb-3 text-sm text-stone-500" v-for="affiliate in affiliates">
+          <p class="mb-3 last:mb-0 text-sm text-stone-500" v-for="affiliate in affiliates">
             <a class="hover:underline" :href="affiliate.url" target="_blank" rel="noopener noreferrer">
               <span>{{ affiliate.id }}</span>
               <i class='bx bx-link-external'></i>
@@ -47,7 +50,7 @@
         </div>
         <div class="md:col-start-3">
           <h3 class="mb-4"><i class='bx bx-globe'></i>頁面</h3>
-          <p class="text-sm text-stone-500" v-for="page in navs">
+          <p class="mb-3 last:mb-0 text-sm text-stone-500" v-for="page in navs">
             <NuxtLink class=" hover:underline" :to="page.url">{{ page.name }}</NuxtLink>
           </p>
         </div>
@@ -60,7 +63,7 @@
       </div>
       <div class=" py-10">
         <p class="text-sm text-stone-500">
-          <NuxtLink to="/">
+          <NuxtLink class="btn btn-ghost" to="/">
             Copyright <i class='bx bx-copyright align-middle'></i> 2024 {{ appConfig.title }}
           </NuxtLink>
         </p>
@@ -74,6 +77,14 @@ const navs = [
   {
     url: '/history',
     name: '歷史匯率'
+  },
+  {
+    url: '/emotion',
+    name: '恐懼情緒'
+  },
+  {
+    url: '/golden',
+    name: '黃金價格'
   }
 ]
 

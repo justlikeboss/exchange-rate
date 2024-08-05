@@ -44,17 +44,36 @@ const {
 const {
   destroyChart,
   createChart
-} = useChart(canvas, exchangeList)
+} = useChart(canvas)
+
+const toChinese = {
+  'cash_buy': '現金買入',
+  'cash_sell': '現金賣出'
+}
+const createChartData = (data) => {
+  return {
+    labels: data.map(row => row.date),
+    datasets: [{
+      label: toChinese['cash_buy'],
+      data: data.map(row => row.cash_buy)
+    }, {
+      label: toChinese['cash_sell'],
+      data: data.map(row => row.cash_sell)
+    }]
+  }
+}
 
 watch(currency, async () => {
   await destroyChart()
   await doFetch()
-  await createChart()
+  const chartData = createChartData(exchangeList.value.data)
+  await createChart(chartData)
 })
 
 onMounted(async () => {
   await doFetch()
-  createChart()
+  const chartData = createChartData(exchangeList.value.data)
+  createChart(chartData)
 })
 </script>
 
@@ -99,11 +118,11 @@ onMounted(async () => {
       </thead>
       <tbody>
         <tr class=" odd:bg-primary/10" v-for="item in exchangeList.data.toReversed()">
-          <td class="text-stone-600 p-2 md:p-3 text-sm md:text-base">{{ item.date }}</td>
-          <td class="text-stone-600 p-2 md:p-3 text-sm md:text-base">{{ item.cash_buy }}</td>
-          <td class="text-stone-600 p-2 md:p-3 text-sm md:text-base">{{ item.cash_sell }}</td>
-          <td class="text-stone-600 p-2 md:p-3 text-sm md:text-base">{{ item.spot_buy }}</td>
-          <td class="text-stone-600 p-2 md:p-3 text-sm md:text-base">{{ item.spot_sell }}</td>
+          <td class="text-stone-600 p-2 md:p-3 text-xs md:text-sm lg:text-base">{{ item.date }}</td>
+          <td class="text-stone-600 p-2 md:p-3 text-sm md:text-base lg:text-lg">{{ item.cash_buy }}</td>
+          <td class="text-stone-600 p-2 md:p-3 text-sm md:text-base lg:text-lg">{{ item.cash_sell }}</td>
+          <td class="text-stone-600 p-2 md:p-3 text-sm md:text-base lg:text-lg">{{ item.spot_buy }}</td>
+          <td class="text-stone-600 p-2 md:p-3 text-sm md:text-base lg:text-lg">{{ item.spot_sell }}</td>
         </tr>
       </tbody>
     </table>

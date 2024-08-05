@@ -54,7 +54,7 @@ const vFocus = {
 <template>
 <NuxtLayout>
 <section>
-  <div class=" max-w-4xl mx-auto w-4/5">
+  <div class="max-w-4xl mx-auto w-4/5">
     <div class=" rounded-md shadow-md bg-white p-10">
       <div class=" flex items-center justify-between mb-10">
         <p class="text-xl">{{ targetCurrencyInfo.name }}</p>

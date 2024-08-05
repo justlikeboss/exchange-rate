@@ -4,6 +4,9 @@ export default {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
+  plugins: [
+    require('daisyui'),
+  ],
   theme: {
     extend: {
       colors: {
@@ -13,6 +16,5 @@ export default {
         'TC': [`"Poetsen One"`, `FakePearl-Regular`, 'sans-serif', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas']
       }
     }
-  },
-  plugins: [],
+  }
 }
