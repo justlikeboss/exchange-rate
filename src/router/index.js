@@ -9,6 +9,10 @@ export const router = createRouter({
   }
 })
 
+router.afterEach((to, from) => {
+  document.title = to.meta.name ? `${to.meta.name} | Exchange Rate Pro` : 'Exchange Rate Pro'
+})
+
 export default router
 
 if (import.meta.hot) { 

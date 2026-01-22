@@ -121,3 +121,12 @@ onMounted(fetchHistory)
     </div>
   </div>
 </template>
+
+<route lang="json">
+{
+  "name": "history",
+  "meta": {
+    "name": "History"
+  }
+}
+</route>

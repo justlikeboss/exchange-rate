@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
 const loading = ref(true)
 const error = ref(null)
@@ -320,3 +320,12 @@ onMounted(() => {
     </div>
   </div>
 </template>
+
+<route lang="json">
+{
+  "name": "gold-price",
+  "meta": {
+    "name": "Gold Price"
+  }
+}
+</route>
