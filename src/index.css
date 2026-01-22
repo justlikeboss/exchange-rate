@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #F59E0B;
+  --color-primary-hover: #D97706;
+  --color-secondary: #FBBF24;
+  --color-surface: rgba(255, 255, 255, 0.05); 
+  --color-background: #0F172A;
+  --color-text: #F8FAFC;
+  --color-text-muted: #94A3B8;
+  --font-sans: "Outfit", system-ui, sans-serif;
+}
+
+/* Base Styles */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(245, 158, 11, 0.08), transparent 25%), 
+    radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08), transparent 25%);
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  @apply rounded-2xl p-6 transition-all duration-300;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.glass-input {
+  @apply w-full border border-white/10 rounded-xl px-4 py-3 text-lg outline-hidden text-white placeholder-white/30 transition-all duration-200;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.glass-input:focus {
+  @apply border-primary/50 shadow-[0_0_0_4px_rgba(245,158,11,0.1)];
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary {
+  @apply bg-primary text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:bg-primary-hover active:scale-95 shadow-lg shadow-primary/20;
+}
